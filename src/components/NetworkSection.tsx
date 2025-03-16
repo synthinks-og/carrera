@@ -1,4 +1,3 @@
-// components/NetworkSection.tsx
 import React, { useMemo } from "react";
 import Image from "next/image";
 import Link from "next/link";
@@ -13,31 +12,31 @@ interface Network {
 const NetworkSection: React.FC = () => {
   const networks: Network[] = useMemo(
     () => [
-      { name: "Arichains", logo: "airchains.jpg", explorer: "#", service: "/testnet/arichains" },
-      { name: "AtomOne", logo: "atomone.png", explorer: "#", service: "https://sychonix.com/testnet/airchains" },
-      { name: "Avail", logo: "avail.png", explorer: "#", service: "/testnet/avail" },
-      { name: "Crossfi", logo: "crossfi.jpg", explorer: "#", service: "/testnet/crossfi" },
-      { name: "Axon", logo: "axone.jpg", explorer: "#", service: "/testnet/axon" },
-      { name: "Dill", logo: "dill.jpg", explorer: "#", service: "/testnet/dill" },
-      { name: "Initia", logo: "initia.jpg", explorer: "#", service: "/testnet/initia" },
-      { name: "Fiamma", logo: "fiamma.jpg", explorer: "#", service: "/testnet/fiamma" },
-      { name: "Kopi", logo: "kopi.jpg", explorer: "#", service: "/testnet/kopi" },
-      { name: "Nubit", logo: "nubit.jpg", explorer: "#", service: "/testnet/nubit" },
-      { name: "Symphony", logo: "sym.jpeg", explorer: "#", service: "/testnet/symphony" },
-      { name: "T3rn", logo: "tern.png", explorer: "#", service: "/testnet/t3rn" },
-      { name: "Union", logo: "union.png", explorer: "#", service: "/testnet/union" },
-      { name: "Tanssi", logo: "tanssi.jpg", explorer: "#", service: "/testnet/tanssi" },
+      { name: "Airchains", logo: "airchains.jpg", explorer: "https://www.airchains.io/", service: "/testnet/airchains" },
+      { name: "AtomOne", logo: "atomone.png", explorer: "https://atom.one/", service: "/testnet/atomone" },
+      { name: "Avail", logo: "avail.png", explorer: "https://token.availproject.org/", service: "/testnet/avail" },
+      { name: "Crossfi", logo: "crossfi.jpg", explorer: "https://crossfi.org/", service: "/testnet/crossfi" },
+      { name: "Axon", logo: "axone.jpg", explorer: "https://www.axone.xyz/", service: "/testnet/axon" },
+      { name: "Dill", logo: "dill.jpg", explorer: "https://dill.xyz/", service: "/testnet/dill" },
+      { name: "Initia", logo: "initia.jpg", explorer: "https://initia.xyz/", service: "/testnet/initia" },
+      { name: "Fiamma", logo: "fiamma.jpg", explorer: "https://www.fiammalabs.io/", service: "/testnet/fiamma" },
+      { name: "Kopi", logo: "kopi.jpg", explorer: "https://kopi.money/", service: "/testnet/kopi" },
+      { name: "Nubit", logo: "nubit.jpg", explorer: "https://www.nubit.org/", service: "/testnet/nubit" },
+      { name: "Symphony", logo: "sym.jpeg", explorer: "https://orchestralabs.org/", service: "/testnet/sym" },
+      { name: "T3rn", logo: "tern.png", explorer: "https://www.t3rn.io/", service: "/testnet/tern" },
+      { name: "Union", logo: "union.png", explorer: "https://union.build/", service: "/testnet/union" },
+      { name: "Tanssi", logo: "tanssi.jpg", explorer: "https://www.tanssi.network/", service: "/testnet/tanssi" },
     ],
     []
   );
 
   return (
-    <div className="text-center mb-48">
+    <div className="text-center mb-64">
       <div>
-        <h1 className="text-3xl font-bold mb-6" id="network">
+        <h1 className="text-4xl font-bold mb-12 text-center text-white" id="network">
           Networks
         </h1>
-        <div className="grid grid-cols-2 sm:grid-cols-2 md:grid-cols-3 lg:grid-cols-4 gap-3">
+        <div className="grid grid-cols-2 sm:grid-cols-2 md:grid-cols-3 lg:grid-cols-4 gap-3 max-w-5xl mx-auto px-4">
           {networks.map((network, index) => (
             <div
               key={index}
@@ -58,6 +57,8 @@ const NetworkSection: React.FC = () => {
               <div className="flex justify-center space-x-4 mt-4">
                 <Link
                   href={network.explorer}
+                  target="_blank" // Open in new tab
+                  rel="noopener noreferrer" // Security
                   className="bg-[#0070f3] px-4 py-1 text-sm rounded-lg hover:bg-[#005bb5] transition text-white"
                 >
                   Explorer
@@ -78,3 +79,4 @@ const NetworkSection: React.FC = () => {
 };
 
 export default NetworkSection;
+

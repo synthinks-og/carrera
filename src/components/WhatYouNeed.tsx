@@ -12,7 +12,7 @@ const WhatYouNeed: React.FC = () => {
     {
       icon: <FaRocket className="text-white" />,
       title: "Highly Secured",
-      description: "Sychonix is highly secured with 24/7 monitoring, ensuring the integrity and safety of transactions and stakeholder assets.",
+      description: "Carrera is highly secured with 24/7 monitoring, ensuring the integrity and safety of transactions and stakeholder assets.",
     },
     {
       icon: <FaBookOpen className="text-white" />,
@@ -32,8 +32,8 @@ const WhatYouNeed: React.FC = () => {
   ];
 
   return (
-    <div className="py-16 px-4 mb-48">
-      <h1 className="text-4xl font-bold mb-12 text-center text-white" id="about">
+    <div className="py-16 px-4 mb-64">
+      <h1 className="text-4xl font-bold mb-12 text-center text-white" id="service">
         What you need to know about Us
       </h1>
       <div className="grid grid-cols-1 md:grid-cols-2 gap-6 max-w-4xl mx-auto">
