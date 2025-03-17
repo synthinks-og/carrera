@@ -5,9 +5,20 @@ import Image from "next/image";
 import Installation from "./Installation"; // Mengimpor komponen Installation
 import { Prism as SyntaxHighlighter } from 'react-syntax-highlighter';
 import { atomDark } from 'react-syntax-highlighter/dist/esm/styles/prism';
+import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
+import { faChevronRight, faChevronDown } from "@fortawesome/free-solid-svg-icons";
 
 const avail: React.FC = () => {
   const [showInstallation, setShowInstallation] = useState(false);
+
+  const handleToggleInstallation = () => {
+    console.log("Before toggle:", showInstallation);
+    setShowInstallation((prev) => {
+      const newState = !prev;
+      console.log("After toggle:", newState);
+      return newState;
+    });
+  };
 
   return (
     <div className="px-4">
@@ -27,24 +38,31 @@ const avail: React.FC = () => {
           <div className="text-sm text-white">
             <span className="mr-2">Chain ID: avail</span>
             <span className="text-green-400 inline-flex items-center">
-              Online <span className="animate-pulse 15s infinte w-[0.7rem] h-[0.7rem] bg-[#10b981] rounded-full ml-1 border-radius-50%"></span>
+            Online <span className="animate-pulse w-[0.7rem] h-[0.7rem] bg-[#10b981] rounded-full ml-1"></span>
             </span>
           </div>
         </div>
 
-        <div className="flex flex-col md:flex-row mt-4 gap-4">
+        {/* Grid Bawah */}
+        <div className="flex flex-col md:flex-row mt-4 gap-4 w-full">
           {/* Sidebar */}
-          <div className="bg-[#0f172a] p-5 rounded-xl w-full md:w-1/4 shadow-lg border border-[#0056b3]">
+          <div className="bg-[#0f172a] p-5 rounded-xl w-full md:w-1/4 shadow-lg border border-[#0056b3] flex-shrink-0 min-h-fit max-h-fit">
             <button 
-              onClick={() => setShowInstallation(!showInstallation)}
-              className="w-full text-left bg-[#0f172a] p-3 rounded-xl hover:bg-[#005bb5] transition duration-300 text-white shadow-md border border-[#0056b3]"
+              onClick={handleToggleInstallation}
+              className={`w-full text-left p-3 rounded-xl transition duration-300 text-white shadow-md border border-[#0056b3] flex items-center ${
+                showInstallation ? 'bg-[#005bb5]' : 'bg-[#0f172a] hover:bg-[#005bb5]'
+              }`}
             >
-              ▶ Installation
+              <FontAwesomeIcon 
+                icon={showInstallation ? faChevronDown : faChevronRight} 
+                className="mr-2" 
+              />
+              Installation
             </button>
           </div>
 
           {/* Main Content */}
-          <div className="bg-[#0f172a] p-7 rounded-2xl shadow-lg border border-[#0056b3] max-w-[100%]">
+          <div className="bg-[#0f172a] p-7 rounded-2xl shadow-lg border border-[#0056b3] flex-1 max-w-full overflow-x-hidden">
             {!showInstallation ? (
               <div className="flex flex-col items-center text-center">
                 <Image 

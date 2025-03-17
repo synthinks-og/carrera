@@ -5,9 +5,8 @@ import CodeBox from "./CodeBox";
 
 const Installation: React.FC = () => {
   return (
-    <div className="text-white">
+    <div className="text-white w-full max-w-full overflow-x-hidden">
       <h2 className="font-bold mb-6 text-xl">Installation</h2>
-
 
       <CodeBox
         language="bash"
@@ -16,7 +15,6 @@ const Installation: React.FC = () => {
 sudo apt install curl iptables build-essential git wget jq make gcc nano tmux htop nvme-cli pkg-config libssl-dev libleveldb-dev tar clang bsdmainutils ncdu unzip libleveldb-dev aria2 -y`}
         rounded="lg"
       />
-
 
       <CodeBox
         language="bash"
@@ -27,7 +25,6 @@ eval $(echo 'export PATH=$PATH:/usr/local/go/bin' | sudo tee /etc/profile.d/gola
 eval $(echo 'export PATH=$PATH:$HOME/go/bin' | tee -a $HOME/.profile)`}
         rounded="xl"
       />
-
 
       <CodeBox
         language="bash"
@@ -44,9 +41,9 @@ make install`}
         language="bash"
         title="Initialize The Node"
         code={`axoned init $MONIKER --chain-id axone-dentrite-1
-sed -i -e "s|^node *=.*|node = \"tcp://localhost:12557\"|" $HOME/.axoned/config/client.toml
-sed -i -e "s|^keyring-backend *=.*|keyring-backend = \"os\"|" $HOME/.axoned/config/client.toml
-sed -i -e "s|^chain-id *=.*|chain-id = \"axone-dentrite-1\"|" $HOME/.axoned/config/client.toml`}
+sed -i -e "s|^node *=.*|node = \\"tcp://localhost:12557\\"|" $HOME/.axoned/config/client.toml
+sed -i -e "s|^keyring-backend *=.*|keyring-backend = \\"os\\"|" $HOME/.axoned/config/client.toml
+sed -i -e "s|^chain-id *=.*|chain-id = \\"axone-dentrite-1\\"|" $HOME/.axoned/config/client.toml`}
         rounded="xl"
       />
 
@@ -62,12 +59,12 @@ curl -L https://snapshot.sychonix.com/testnet/axone/addrbook.json > $HOME/.axone
         language="bash"
         title="Configure Seeds and Peers"
         code={`SEEDS="5b1b9e288b538dfe2ea4600427cbde3a6ed58daf@axone-testnet.sychonix.com:12556"
-PEERS="$(curl -sS https://rpc-axone-t.sychonix.com/net_info | jq -r '.result.peers[] | "\(.node_info.id)@\(.remote_ip):\(.node_info.listen_addr)"' | awk -F ':' '{print $1":"$(NF)}' | sed -z 's|\n|,|g;s|.$||')"
-sed -i -e "s|^seeds *=.*|seeds = '"$SEEDS"'|; s|^persistent_peers *=.*|persistent_peers = '"$PEERS"'|" $HOME/.axoned/config/config.toml`}
+PEERS="$(curl -sS https://rpc-axone-t.sychonix.com/net_info | jq -r '.result.peers[] | "\\(.node_info.id)@\\(.remote_ip):\\(.node_info.listen_addr)"' | awk -F ':' '{print $1":"$(NF)}' | sed -z 's|\\n|,|g;s|.$||')"
+sed -i -e "s|^seeds *=.*|seeds = '$SEEDS'|; s|^persistent_peers *=.*|persistent_peers = '$PEERS'|" $HOME/.axoned/config/config.toml`}
         rounded="xl"
       />
-      
-       <CodeBox
+
+      <CodeBox
         language="bash"
         title="Update Port Configuration"
         code={`sed -i -e "s%:1317%:12517%; s%:8080%:12580%; s%:9090%:12590%; s%:9091%:12591%; s%:8545%:12545%; s%:8546%:12546%; s%:6065%:12565%" $HOME/.axoned/config/app.toml
@@ -75,25 +72,23 @@ sed -i -e "s%:26658%:12558%; s%:26657%:12557%; s%:6060%:12560%; s%:26656%:12556%
         rounded="lg"
       />
 
-
       <CodeBox
         language="bash"
         title="Customize Pruning"
-        code={`sed -i \
-  -e 's|^pruning *=.*|pruning = "custom"|' \
-  -e 's|^pruning-keep-recent *=.*|pruning-keep-recent = "100"|' \
-  -e 's|^pruning-interval *=.*|pruning-interval = "17"|' \
+        code={`sed -i \\
+  -e 's|^pruning *=.*|pruning = "custom"|' \\
+  -e 's|^pruning-keep-recent *=.*|pruning-keep-recent = "100"|' \\
+  -e 's|^pruning-interval *=.*|pruning-interval = "17"|' \\
   $HOME/.axoned/config/app.toml`}
         rounded="xl"
       />
 
-
       <CodeBox
         language="bash"
         title="Set Minimum Gas Price, Enable Prometheus, and Disable the Indexer"
-        code={`sed -i -e "s|^minimum-gas-prices *=.*|minimum-gas-prices = \"0uaxone\"|" $HOME/.axoned/config/app.toml
+        code={`sed -i -e "s|^minimum-gas-prices *=.*|minimum-gas-prices = \\"0uaxone\\"|" $HOME/.axoned/config/app.toml
 sed -i -e "s/prometheus = false/prometheus = true/" $HOME/.axoned/config/config.toml
-sed -i -e "s/^indexer *=.*/indexer = \"null\"/" $HOME/.axoned/config/config.toml`}
+sed -i -e "s/^indexer *=.*/indexer = \\"null\\"/" $HOME/.axoned/config/config.toml`}
         rounded="xl"
       />
 

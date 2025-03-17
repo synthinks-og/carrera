@@ -4,7 +4,6 @@ import { faCopy } from "@fortawesome/free-solid-svg-icons";
 import { Prism as SyntaxHighlighter } from "react-syntax-highlighter";
 import { atomDark } from "react-syntax-highlighter/dist/esm/styles/prism";
 
-// Definisikan tipe untuk props
 interface CodeBoxProps {
   language: string;
   title: string;
@@ -12,7 +11,6 @@ interface CodeBoxProps {
   rounded: "lg" | "xl" | "3xl";
 }
 
-// Komponen CodeBox
 const CodeBox: React.FC<CodeBoxProps> = ({ language, title, code, rounded }) => {
   const copyToClipboard = async () => {
     try {
@@ -24,13 +22,13 @@ const CodeBox: React.FC<CodeBoxProps> = ({ language, title, code, rounded }) => 
   };
 
   return (
-    <div className="mb-6">
+    <div className="mb-6 w-full max-w-full">
       <p className="mb-2 text-gray-300">{title}</p>
-      <div className={`relative bg-[rgb(22,24,28)] rounded-${rounded}`}>
+      <div className={`relative bg-[rgb(22,24,28)] rounded-${rounded} w-full max-w-full overflow-x-auto`}>
         <span className="absolute top-1.5 left-2 text-[10px] text-[#94a3b8] bg-[rgb(32,35,39)] px-1.5 py-0.5 rounded">
           {language}
         </span>
-        <div className="overflow-x-auto pt-7">
+        <div className="w-full">
           <SyntaxHighlighter
             language={language}
             style={atomDark}
@@ -38,14 +36,23 @@ const CodeBox: React.FC<CodeBoxProps> = ({ language, title, code, rounded }) => 
               margin: 0,
               padding: "12px",
               paddingTop: "6px",
-              borderRadius: `0 0 ${rounded === "lg" ? "0.5rem" : rounded === "xl" ? "0.75rem" : "1rem"} ${rounded === "lg" ? "0.5rem" : rounded === "xl" ? "0.75rem" : "1rem"}`,
+              borderRadius: `0 0 ${
+                rounded === "lg" ? "0.5rem" : rounded === "xl" ? "0.75rem" : "1rem"
+              } ${
+                rounded === "lg" ? "0.5rem" : rounded === "xl" ? "0.75rem" : "1rem"
+              }`,
               fontSize: "0.875rem",
               lineHeight: "1.4",
               background: "rgb(32, 35, 39)",
+              maxWidth: "100%", // Pastikan tidak melebihi 100%
+              width: "100%", // Ikuti lebar parent
+              whiteSpace: "pre-wrap", // Izinkan pembungkusan teks jika perlu
+              overflowX: "auto", // Aktifkan scroll horizontal
+              boxSizing: "border-box",
             }}
             wrapLines={true}
             showLineNumbers={false}
-            className="overflow-x-auto pt-7 pb-3 bg-[rgb(32, 35, 39)] text-white p-4 rounded-b-lg"
+            className="w-full max-w-full overflow-x-auto pt-7 pb-3 bg-[rgb(32, 35, 39)] text-white p-4 rounded-b-lg"
           >
             {code}
           </SyntaxHighlighter>
