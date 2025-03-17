@@ -8,6 +8,23 @@ import Installation from "../../../components/Installation";
 import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
 import { faChevronRight, faChevronDown } from "@fortawesome/free-solid-svg-icons";
 
+// Definisikan tipe untuk InstallationStep (sama dengan di Installation.tsx)
+interface InstallationStep {
+  language: string;
+  title: string;
+  code: string;
+  rounded: "lg" | "xl" | "3xl";
+}
+
+// Definisikan tipe untuk TestnetItem
+interface TestnetItem {
+  name: string;
+  logo: string;
+  chainId: string;
+  description: string;
+  installationSteps: InstallationStep[];
+}
+
 interface TestnetPageProps {
   params: { item: string };
 }
@@ -25,12 +42,19 @@ const TestnetPage: React.FC<TestnetPageProps> = ({ params }) => {
   };
 
   // Ambil data berdasarkan parameter URL
-  const itemData = testnetItems[params.item as keyof typeof testnetItems];
+  const itemData = testnetItems[params.item as keyof typeof testnetItems] as TestnetItem | undefined;
 
   // Jika item tidak ditemukan, tampilkan 404
   if (!itemData) {
     notFound();
   }
+
+  // Validasi dan transformasi data installationSteps
+  const validRoundedValues = ["lg", "xl", "3xl"] as const;
+  const transformedSteps: InstallationStep[] = itemData.installationSteps.map(step => ({
+    ...step,
+    rounded: validRoundedValues.includes(step.rounded as any) ? step.rounded : "lg", // Default ke "lg" jika tidak valid
+  }));
 
   return (
     <div className="px-4">
@@ -87,7 +111,7 @@ const TestnetPage: React.FC<TestnetPageProps> = ({ params }) => {
                 <p className="text-gray-300 mt-3 max-w-xl">{itemData.description}</p>
               </div>
             ) : (
-              <Installation steps={itemData.installationSteps} />
+              <Installation steps={transformedSteps} /> // Gunakan data yang sudah divalidasi
             )}
           </div>
         </div>
