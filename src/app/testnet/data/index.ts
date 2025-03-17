@@ -5,15 +5,18 @@ import { axoneData } from "./axoneData";
 import { crossfiData } from "./crossfiData";
 import { dillData } from "./dillData";
 import {fiammaData} from "./fiammaData";
+import {gaianetData} from "./gaianetData";
 import {initiaData} from "./initiaData";
 import { kopiData } from "./kopiData";
 import { nubitData } from "./nubitData";
+import {zeroglabsData} from "./zeroglabsData";
 import { symphonyData } from "./symphonyData";
 import { tanssiData } from "./tanssiData";
 import { ternData } from "./ternData";
 import { unionData } from "./unionData";
 import { chainflipData } from "./chainflipData";
 import { chasmData } from "./chasmData";
+import {prysmData} from "./prysmData";
 
 
 export const testnetItems = {
@@ -33,5 +36,8 @@ export const testnetItems = {
   union: unionData,
   chainflip: chainflipData,
   chasm: chasmData,
+  gaianet: gaianetData,
+  zeroglabs: zeroglabsData,
+  prysm: prysmData,
   // ... lainnya
 };
