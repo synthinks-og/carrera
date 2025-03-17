@@ -163,6 +163,7 @@ sudo systemctl restart kopid.service && sudo journalctl -u kopid.service -f --no
 
 <CodeBox
         language="bash"
+        title=""
         code={`kopid tx staking create-validator $HOME/.kopid/validator.json \
 --from wallet \
 --chain-id kopi-test-6`}
