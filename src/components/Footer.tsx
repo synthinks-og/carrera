@@ -23,7 +23,7 @@ const Footer: React.FC = () => {
         </div>
         {/* Teks Hak Cipta */}
         <p className="text-gray-400 text-sm">
-          © {new Date().getFullYear()} Carrera. Committed to Secure Networks.
+          Carrera. Committed to Secure Networks.
         </p>
       </div>
     </footer>
