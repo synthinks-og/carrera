@@ -33,7 +33,7 @@ const WhatYouNeed: React.FC = () => {
 
   return (
     <div className="py-16 px-4 mb-64">
-      <h1 className="text-4xl font-bold mb-12 text-center text-white" id="service">
+      <h1 className="text-5xl md:text-6xl font-bold mb-6 text-center text-white" id="service">
         What you need to know about Us
       </h1>
       <div className="grid grid-cols-1 md:grid-cols-2 gap-6 max-w-4xl mx-auto">

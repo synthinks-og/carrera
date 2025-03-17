@@ -15,7 +15,7 @@
     "incremental": true,
     "baseUrl": ".", // Ditambahkan untuk mendukung paths
     "paths": {
-      "@/*": ["./src/*"]
+     "@/*": ["./src/*"],
     },
     "plugins": [
       {

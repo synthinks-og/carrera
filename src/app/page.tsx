@@ -1,9 +1,9 @@
 "use client";
 
 import React from "react";
-import HiSychonix from "../components/HiSychonix";
-import WhatYouNeed from "../components/WhatYouNeed";
-import NetworkSection from "../components/NetworkSection";
+import HiSychonix from "@/components/HiSychonix";
+import WhatYouNeed from "@/components/WhatYouNeed";
+import NetworkSection from "@/components/NetworkSection";
 
 const Home: React.FC = () => {
   return (
@@ -16,4 +16,3 @@ const Home: React.FC = () => {
 };
 
 export default Home;
-
