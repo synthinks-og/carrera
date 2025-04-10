@@ -14,7 +14,7 @@ interface Network {
 const NetworkSection: React.FC = () => {
   const [activeTab, setActiveTab] = useState<"Airdrop" | "Node">("Node");
 
-  const renderItem = (item: Network, Airdrop, index: number) => (
+  const renderItem = (item: Network, index: number) => (
     <div
       key={index}
       className="bg-[rgba(0,40,63,0.3)] p-6 rounded-3xl text-center border border-[#0070f3] transition-transform transform hover:-translate-y-2 hover:shadow-md hover:bg-[rgba(0,90,200,0.3)]"

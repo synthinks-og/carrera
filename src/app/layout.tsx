@@ -7,7 +7,7 @@ import { Suspense } from "react";
 const inter = Inter({ subsets: ["latin"] });
 
 export const metadata: Metadata = {
-  title: "Carrera",
+  title: "Synthinks",
   description: "Committed to Secure Networks.",
 };
 

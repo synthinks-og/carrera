@@ -12,12 +12,12 @@ const WhatYouNeed: React.FC = () => {
     {
       icon: <FaRocket className="text-white" />,
       title: "Highly Secured",
-      description: "Carrera is highly secured with 24/7 monitoring, ensuring the integrity and safety of transactions and stakeholder assets.",
+      description: "My operations are highly secured with 24/7 monitoring, ensuring the integrity and safety of transactions and stakeholder assets.",
     },
     {
       icon: <FaBookOpen className="text-white" />,
       title: "Service Guide",
-      description: "We provide comprehensive setup documents and guides for our community, empowering users to navigate and utilize our platform effectively.",
+      description: "Comprehensive setup documents and guides are provided for the community, empowering users to navigate and utilize the platform effectively.",
     },
     {
       icon: <FaLink className="text-white" />,
